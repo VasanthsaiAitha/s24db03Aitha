@@ -19,3 +19,16 @@ res.send('NOT IMPLEMENTED: MusicalInstruments delete DELETE ' + req.params.id);
 exports.MusicalInstruments_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: MusicalInstruments update PUT' + req.params.id);
 };
+
+// List of all Costumes
+exports.MusicalInstruments_list = async function(req, res) {
+    try{
+    theMusicalInstruments = await MusicalInstruments.find();
+    res.send(theMusicalInstruments);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
+    
