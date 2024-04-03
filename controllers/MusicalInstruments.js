@@ -20,7 +20,7 @@ exports.MusicalInstruments_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: MusicalInstruments update PUT' + req.params.id);
 };
 
-// List of all Costumes
+// List of all MusicalInstruments
 exports.MusicalInstruments_list = async function(req, res) {
     try{
     theMusicalInstruments = await MusicalInstruments.find();
@@ -31,4 +31,18 @@ exports.MusicalInstruments_list = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
     };
+    
+// VIEWS
+// Handle a show all view
+exports.MusicalInstruments_view_all_Page = async function(req, res) {
+    try{
+    theMusicalInstruments = await MusicalInstruments.find();
+    res.render('MusicalInstruments', { title: 'MusicalInstruments Search Results', results: theMusicalInstruments });
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
+
     

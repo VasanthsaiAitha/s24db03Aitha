@@ -7,3 +7,10 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+var express = require('express');
+const MusicalInstruments_controlers= require('../controllers/MusicalInstruments');
+var router = express.Router();
+/* GET MusicalInstruments */
+router.get('/', MusicalInstruments_controlers.MusicalInstruments_view_all_Page );
+module.exports = router;

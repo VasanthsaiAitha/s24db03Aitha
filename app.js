@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var MusicalInstrumentsRouter = require('./model/MusicalInstruments');
+var MusicalInstrumentsRouter = require('./routes/MusicalInstruments');
 var gridrsRouter = require('./routes/grid');
 var pickRouter = require('./routes/pick')
 var MusicalInstruments = require('./model/MusicalInstruments');
