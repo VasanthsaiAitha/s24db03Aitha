@@ -44,14 +44,14 @@ exports.MusicalInstruments_view_all_Page = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
     };
-    // Handle Costume create on POST.
+    // Handle MusicalInstruments create on POST.
     exports.MusicalInstruments_create_post = async function(req, res) {
     console.log(req.body)
     let document = new MusicalInstruments();
     // We are looking for a body, since POST does not have query parameters.
     // Even though bodies can be in many different formats, we will be picky
     // and require that it be a json object
-    // {"costume_type":"goat", "cost":12, "size":"large"}
+    // {"MusicalInstruments_type":"goat", "cost":12, "size":"large"}
     document.instrument_name = req.body.instrument_name;
     document.condition = req.body.condition;
     document.price = req.body.price;
@@ -64,4 +64,14 @@ exports.MusicalInstruments_view_all_Page = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
     };
-    
+// for a specific MusicalInstruments.
+exports.MusicalInstruments_detail = async function(req, res) {
+console.log("detail" + req.params.id)
+try {
+result = await MusicalInstruments.findById( req.params.id)
+res.send(result)
+} catch (error) {
+res.status(500)
+res.send(`{"error": document for id ${req.params.id} not found`);
+}
+};

@@ -9,8 +9,12 @@ router.get('/', function(req, res, next) {
 module.exports = router;
 
 var express = require('express');
-const MusicalInstruments_controlers= require('../controllers/MusicalInstruments');
+const MusicalInstruments_controllers= require('../controllers/MusicalInstruments');
 var router = express.Router();
 /* GET MusicalInstruments */
-router.get('/', MusicalInstruments_controlers.MusicalInstruments_view_all_Page );
+router.get('/', MusicalInstruments_controllers.MusicalInstruments_view_all_Page );
+
+// GET request for one MusicalInstruments.
+router.get('/MusicalInstruments/:id', MusicalInstruments_controllers.MusicalInstruments_detail);
+
 module.exports = router;
