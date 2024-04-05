@@ -17,4 +17,8 @@ router.get('/', MusicalInstruments_controllers.MusicalInstruments_view_all_Page 
 // GET request for one MusicalInstruments.
 router.get('/MusicalInstruments/:id', MusicalInstruments_controllers.MusicalInstruments_detail);
 
+router.put('/',function(req, req){
+if(req.body.checkboxsale) toUpdate.sale = true;
+else toUpdate.same = false;})
+
 module.exports = router;
