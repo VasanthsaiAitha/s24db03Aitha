@@ -23,4 +23,6 @@ else toUpdate.same = false;})
 
 /* GET detail MusicalInstruments page */
 router.get('/detail', MusicalInstruments_controllers.MusicalInstruments_view_one_Page);
+/* GET create MusicalInstruments page */
+router.get('/create', MusicalInstruments_controllers.MusicalInstruments_create_Page);
 module.exports = router;
