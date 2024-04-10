@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  - let MusicalInstrumentsid = toShow._id
+  - let MusicalInstruments_name = toShow.instrument_name
+  - let MusicalInstrumentscondition = toShow.condition
+  - let MusicalInstrumentsprice = toShow.price
+  div
+    div.row
+      div(class='MusicalInstrumentsAttr mr-3') MusicalInstruments ID is:
+      div #{MusicalInstrumentsid}
+    div.row
+      div(class='MusicalInstrumentsAttr mr-3') MusicalInstruments Name is:
+      div #{MusicalInstruments_name}
+    div.row
+      div(class='MusicalInstrumentsAttr mr-3') MusicalInstruments condition is:
+      div #{MusicalInstrumentscondition}
+    div.row
+      div(class='MusicalInstrumentsAttr mr-3') MusicalInstruments price is:
+      div #{MusicalInstrumentsprice}

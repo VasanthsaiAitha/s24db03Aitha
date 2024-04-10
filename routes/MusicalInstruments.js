@@ -21,4 +21,6 @@ router.put('/',function(req, req){
 if(req.body.checkboxsale) toUpdate.sale = true;
 else toUpdate.same = false;})
 
+/* GET detail MusicalInstruments page */
+router.get('/detail', MusicalInstruments_controllers.MusicalInstruments_view_one_Page);
 module.exports = router;

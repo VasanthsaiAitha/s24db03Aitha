@@ -82,7 +82,7 @@ ${JSON.stringify(req.body)}`)
 try {
 let toUpdate = await MusicalInstruments.findById( req.params.id)
 // Do updates of properties
-if(req.body.MusicalInstruments_type)
+if(req.body.instrument_name)
 toUpdate.instrument_name = req.body.instrument_name;
 if(req.body.condition) toUpdate.condition = req.body.condition;
 if(req.body.price) toUpdate.price = req.body.price;
@@ -93,6 +93,32 @@ res.send(result)
 res.status(500)
 res.send(`{"error": ${err}: Update for id ${req.params.id}
 failed`);
+}
+};
+// Handle MusicalInstruments delete on DELETE.
+exports.MusicalInstruments_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await MusicalInstruments.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+
+// Handle a show one view with id specified by query
+exports.MusicalInstruments_view_one_Page = async function(req, res) {
+console.log("single view for id " + req.query.id)
+try{
+result = await MusicalInstruments.findById( req.query.id)
+res.render('MusicalInstrumentsdetail',
+{ title: 'MusicalInstruments Detail', toShow: result });
+}
+catch(err){
+res.status(500)
+res.send(`{'error': '${err}'}`);
 }
 };
 
