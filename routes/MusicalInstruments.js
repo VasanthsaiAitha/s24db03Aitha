@@ -27,5 +27,6 @@ router.get('/detail', MusicalInstruments_controllers.MusicalInstruments_view_one
 router.get('/create', MusicalInstruments_controllers.MusicalInstruments_create_Page);
 /* GET create update page */
 router.get('/update', MusicalInstruments_controllers.MusicalInstruments_update_Page);
-
+/* GET delete MusicalInstruments page */
+router.get('/delete', MusicalInstruments_controllers.MusicalInstruments_delete_Page);
 module.exports = router;

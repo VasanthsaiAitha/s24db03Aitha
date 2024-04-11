@@ -1,0 +1,52 @@
+extends layout
+ 
+block content
+    h1= title
+    if (toShow == null)
+        h2 No instance to delete
+    else
+        - let MusicalInstrumentsid = toShow._id
+        - let instrument_name  = toShow.instrument_name
+        - let condition = toShow.condition
+        - let price = toShow.price
+        - let actionid = "/resource/MusicalInstruments/" + MusicalInstrumentsid
+        script.
+            let actionid = "#{actionid}"
+        div
+            div.row
+                div(class='MusicalInstrumentsAttr mr-3') MusicalInstruments ID is:
+                div #{MusicalInstrumentsid}
+            div.row
+                div(class='MusicalInstrumentsAttr mr-3') MusicalInstruments Style is:
+                div #{instrument_name}
+            div.row
+                div(class='MusicalInstrumentsAttr mr-3') MusicalInstruments Size is:
+                div #{condition}
+            div.row
+                div(class='MusicalInstrumentsAttr mr-3') MusicalInstruments Price is:
+                div #{price}
+        button(class="btn btn-success m-2" onclick="deleteOnid()") Delete
+        button(class="btn btn-warning m-2" onclick="cancel()") Cancel
+       
+    script.
+        function cancel() {
+            // Go back to the home page for the MusicalInstruments collection
+            window.location.href='/MusicalInstruments'
+        }
+    script.
+        function deleteOnid() {
+            console.log("starting delete")
+            // delete first
+            fetch(actionid, {
+                method: 'DELETE' // Don't need a body for the delete
+            }).then((resp) => {
+                return resp.text(); // or resp.text() or wMusicalInstrumentsever the server sends
+            }).then((body) => {
+                alert("Delete succeeded")
+                window.location.href='/MusicalInstruments'
+                // TODO handle body
+            }).catch((error) => {
+                // TODO handle error
+                alert("Delete failed " + error )
+            });
+        }
