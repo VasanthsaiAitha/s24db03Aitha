@@ -2,7 +2,16 @@ extends layout
  
 block content
   h1= title
- 
+  style.
+    body {
+      background-color: coral;
+    }
+    .form-group {
+      border: 2px solid black;
+      border-radius:10px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
   form(id='MusicalInstrumentsForm', action="/resource/MusicalInstruments", method="POST")
     div.form-group
       label.MusicalInstrumentsAttr(for='instrument_name') MusicalInstruments instrument_name
