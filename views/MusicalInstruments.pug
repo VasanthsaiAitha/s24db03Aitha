@@ -22,18 +22,50 @@
 //-   script.
 //-     function buy(index) {
 //-       alert("You purchased item " + index);
-//-     }
-extends layout
+//- //-     }
+//- extends layout
  
+//- block content
+//-   h1= title
+//-   - let items = results;
+//-   div(class="container-fluid")
+//-   div(class="row m-1")
+//-     each item in items
+//-       - let destination = `dispatch(\"/MusicalInstruments/update?id=${item._id}\")`
+//-       div(class="row-sm-2", class="m-1") Item: #{item.instrument_name}(#{item.condition}) is #{item.price}
+//-       button.btn( class="btn-primary ml-1", onclick= destination) Update
+//-   script.
+//-     function dispatch(path){
+//-       window.location.href=path}
+extends layout
+
 block content
   h1= title
   - let items = results;
-  div(class="container-fluid")
-  div(class="row m-1")
-    each item in items
-      - let destination = `dispatch(\"/MusicalInstruments/update?id=${item._id}\")`
-      div(class="row-sm-2", class="m-1") Item: #{item.instrument_name}(#{item.condition}) is #{item.price}
-      button.btn( class="btn-primary ml-1", onclick= destination) Update
+  each item in items
+    - let updateMusicalInstruments = `dispatch("/MusicalInstruments/update?id=${item._id}")`
+    - let MusicalInstrumentsDetails = `dispatch("/MusicalInstruments/detail?id=${item._id}")`
+    - let MusicalInstrumentsDeletion = `dispatch("/MusicalInstruments/delete?id=${item._id}")`
+    - let MusicalInstrumentsCreate = `dispatch("/MusicalInstruments/create?id=${item._id}")`
+ 
+    div
+      p MusicalInstruments name - #{item.instrument_name}
+      p MusicalInstruments condition - #{item.condition}
+      p Price - #{item.price}
+      button.btn.btn-primary.ml-1(onclick=updateMusicalInstruments) Update
+      button.btn.btn-secondary.ml-1(onclick=MusicalInstrumentsDetails) Detail
+      button.btn.btn-danger.ml-1(onclick=MusicalInstrumentsDeletion) Delete
+      button.btn.btn-info.m1-1(onclick=MusicalInstrumentsCreate) Create
+      br
+      br
+
+  style.
+    .btn {
+      margin-right: 5px;
+      margin-bottom: 15px;
+    }
+ 
   script.
     function dispatch(path){
-      window.location.href=path}
+      window.location.href = path;
+    }

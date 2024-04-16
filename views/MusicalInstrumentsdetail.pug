@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  if toShow=null 
+  if toShow == null
     h2 No instance to show
   else
     - let MusicalInstrumentsid = toShow._id
@@ -11,14 +11,14 @@ block content
     - let MusicalInstrumentsprice = toShow.price
     div
       div.row
-        div(class='MusicalInstrumentsAttr mr-3') MusicalInstruments ID is:
+        div(class='MusicalInstrumentsAttr mr-3') Musical Instruments ID is:
         div #{MusicalInstrumentsid}
       div.row
-        div(class='MusicalInstrumentsAttr mr-3') MusicalInstruments Name is:
+        div(class='MusicalInstrumentsAttr mr-3') Musical Instruments Name is:
         div #{MusicalInstruments_name}
       div.row
-        div(class='MusicalInstrumentsAttr mr-3') MusicalInstruments condition is:
+        div(class='MusicalInstrumentsAttr mr-3') Musical Instruments condition is:
         div #{MusicalInstrumentscondition}
       div.row
-        div(class='MusicalInstrumentsAttr mr-3') MusicalInstruments price is:
+        div(class='MusicalInstrumentsAttr mr-3') Musical Instruments price is:
         div #{MusicalInstrumentsprice}
