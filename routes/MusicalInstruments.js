@@ -21,11 +21,6 @@ router.get('/MusicalInstruments/:id', MusicalInstruments_controllers.MusicalInst
 // router.put('/',function(req, req){
 // if(req.body.checkboxsale) toUpdate.sale = true;
 // else toUpdate.same = false;})
-
-/* GET detail MusicalInstruments page */
-router.get('/detail', MusicalInstruments_controllers.MusicalInstruments_view_one_Page);
-/* GET create MusicalInstruments page */
-router.get('/create', MusicalInstruments_controllers.MusicalInstruments_create_Page);
 /* GET create update page */
 const secured = (req, res, next) => {
   if (req.user){
@@ -33,9 +28,13 @@ const secured = (req, res, next) => {
   }
   res.redirect("/login");
   }
+/* GET detail MusicalInstruments page */
+router.get('/detail',secured, MusicalInstruments_controllers.MusicalInstruments_view_one_Page);
+/* GET create MusicalInstruments page */
+router.get('/create', MusicalInstruments_controllers.MusicalInstruments_create_Page);
 router.get('/update',secured, MusicalInstruments_controllers.MusicalInstruments_update_Page);
 /* GET delete MusicalInstruments page */
-router.get('/delete', MusicalInstruments_controllers.MusicalInstruments_delete_Page);
+router.get('/delete',secured, MusicalInstruments_controllers.MusicalInstruments_delete_Page);
 // A little function to check if we have an authorized user and continue on or
 // redirect to login.
 router.post('/login', passport.authenticate('local'), function(req, res) {
